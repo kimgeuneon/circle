@@ -1,6 +1,3 @@
-"# circle-root" 
-"# circle-root" 
-"# circle-root" 
-"# circle-root" 
-"# circle-root" 
-"# circle-root" 
+인공지능개론 과제1
+홍기현/김근언조
+과제 제출합니다.
