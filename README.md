@@ -9,10 +9,10 @@ Fashion_train_CNN -> 이를 통해 실행시킬 수 있습니다.
 import tensorflow as tf
 from tensorflow.keras.datasets import fashion_mnist
 
-# Fashion MNIST 데이터셋 다운로드 및 로드
+Fashion MNIST 데이터셋 다운로드 및 로드
 (x_train, t_train), (x_test, t_test) = fashion_mnist.load_data()
 
-# 데이터의 shape을 (N, H, W)에서 (N, C, H, W)로 변환
+데이터의 shape을 (N, H, W)에서 (N, C, H, W)로 변환
 x_train = np.expand_dims(x_train, axis=1)  # (60000, 28, 28) -> (60000, 1, 28, 28)
 x_test = np.expand_dims(x_test, axis=1)    # (10000, 28, 28) -> (10000, 1, 28, 28)
 
