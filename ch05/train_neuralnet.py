@@ -50,6 +50,21 @@ iter_per_epoch = max(train_size / batch_size, 1) #한 에폭당 필요한 반복
 
 log_file = open("training_log.txt", "w")
 
+# 기존 print() 함수 저장
+old_print = print
+
+# 새로운 print 함수 정의
+def new_print(*args, **kwargs):
+    # 콘솔에 출력
+    old_print(*args, **kwargs)
+    # 파일에 기록
+    old_print(*args, **kwargs, file=log_file)
+    # 로그 파일 즉시 갱신
+    log_file.flush()
+
+# print 함수를 오버라이드
+print = new_print
+
 
 for i in range(iters_num):
     batch_mask = np.random.choice(train_size, batch_size)
@@ -89,8 +104,11 @@ for i in range(iters_num):
         print(f'Epoch {i // iter_per_epoch}: Loss: {loss:.4f} Train Accuracy: {train_acc*100:.4f}%, Test Accuracy: {test_acc*100:.4f}%')
         if train_acc*100>99 and test_acc*100>95:break
 
+# 로그 파일 닫기
 log_file.close()
 
+# print 함수를 원래대로 복구
+print = old_print
 
 from matplotlib.ticker import FuncFormatter
 
